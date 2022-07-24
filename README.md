@@ -2,9 +2,15 @@
 
 Website for the Fellowship of the Whale robotics team
 
-## Running
+## Installing and Running
 
-While not strictly necessary, this example should be built in release mode:
+Install npm dependencies with
+
+```bash
+npm install
+```
+
+build and serve with trunk (should be run in release mode although not strictly necessary)
 
 ```bash
 trunk serve --release
