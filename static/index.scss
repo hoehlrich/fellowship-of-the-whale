@@ -1,0 +1,34 @@
+.hero {
+	&.has-background {
+		position: relative;
+		overflow: hidden;
+	}
+
+	&-background {
+		position: absolute;
+		object-fit: cover;
+		object-position: bottom;
+		width: 100%;
+		height: 100%;
+
+		&.is-transparent {
+			opacity: 0.3;
+		}
+	}
+	text-align: left;
+}
+
+.burger {
+	background-color: transparent;
+	border: none;
+}
+
+.navbar-brand {
+	align-items: center;
+}
+
+$blue: #3e8fb0;
+$primary: $blue;
+$footer-padding: 2rem 1.5rem 3rem;
+
+@import "../node_modules/bulma/bulma.sass";
