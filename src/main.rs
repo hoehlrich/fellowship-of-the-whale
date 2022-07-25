@@ -112,13 +112,13 @@ impl App {
             <>
                 <section class="has-background-primary">
                     <div class="container">
-                        <section class="hero is-primary">
+                        <section class="hero is-primary is-small">
                             <div class="hero-body ml-0">
                                 <p class="title">
                                     { "FRC Team 4242: The Fellowship of the Whale" }
                                 </p>
-                                <p class="subtitle">
-                                    { "Definately a real subtitle" }
+                                <p class="subtitle is-size-6 pt-1">
+                                    { "Spreading STEM while promoting diversity and inclusion" }
                                 </p>
                             </div>
                         </section>
@@ -126,9 +126,9 @@ impl App {
                 </section>
                 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
                     <div class="container">
-                        <div class="navbar-brand">
+                        <div class="navbar-brand ml-2">
                             <Link<Route> classes={"navbar-item"} to={Route::Home}>
-                                <img src="../static/img/fotw_logo.png"/>
+                                <img src="../static/img/fotw_icon.png"/>
                             </Link<Route>>
                             <button class={classes!("navbar-burger", "burger", active_class)}
                                 aria-label="menu" aria-expanded="false"
