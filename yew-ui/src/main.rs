@@ -3,7 +3,6 @@ use yew_router::prelude::*;
 
 mod components;
 mod pages;
-mod services;
 
 use pages::about_us::AboutUs;
 use pages::calendar::Calendar;
