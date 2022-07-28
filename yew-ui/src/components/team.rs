@@ -26,7 +26,11 @@ impl Component for Team {
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
-        let Self { team, description, img_src } = self;
+        let Self {
+            team,
+            description,
+            img_src,
+        } = self;
         html! {
             <div class="column">
                 <figure class="image is-128by128 p-5">

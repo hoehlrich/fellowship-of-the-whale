@@ -1,9 +1,10 @@
 use {
     wasm_bindgen::{JsCast, JsValue},
     wasm_bindgen_futures::JsFuture,
-    web_sys::{Request, RequestInit, RequestMode, RequestRedirect, Response},
     web_sys,
+    web_sys::{Request, RequestInit, RequestMode, RequestRedirect, Response},
 };
+use log;
 
 pub enum Method {
     GET,
@@ -46,6 +47,8 @@ pub async fn fetch(
     assert!(resp_value.is_instance_of::<Response>());
     let resp: Response = resp_value.dyn_into().unwrap();
 
+    log::info!("Update: request fetched with response {:?}", resp);
+
     // Convert JS Promise into a Rust Future
     let json = JsFuture::from(resp.json()?).await?;
 
@@ -68,10 +71,13 @@ impl Fetch {
             Method::OPTIONS => "OPTIONS",
             Method::DELETE => "DELETE",
         };
+        log::info!("Update: request recieved at fetcher");
         fetch(url, method.to_string(), payload).await
     }
 
     pub async fn get(url: String) -> Result<JsValue, JsValue> {
+        log::info!("Update: request recieved at getter");
+
         Fetch::fetch(url, Method::GET, None).await
     }
 

@@ -10,13 +10,13 @@ use pages::calendar::Calendar;
 use pages::contact::Contact;
 use pages::documents::Documents;
 use pages::donate::Donate;
+use pages::echo::Echo;
 use pages::home::Home;
 use pages::page_not_found::PageNotFound;
 use pages::posts::Posts;
 use pages::press::Press;
 use pages::sponsors::Sponsors;
 use pages::teams::Teams;
-use pages::echo::Echo;
 
 use yew::html::Scope;
 
@@ -43,7 +43,7 @@ pub enum Route {
     #[at("/donate")]
     Donate,
     #[at("/echo/:item")]
-    Echo {item: String },
+    Echo { item: String },
     #[not_found]
     #[at("/404")]
     NotFound,
