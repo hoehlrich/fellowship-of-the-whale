@@ -12,8 +12,6 @@ mod handlers;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     const ACTIX_PORT: &str = "8084";
-    const UI_PORT: &str = "8080";
-    const UI_HOST: &str = "127.0.0.1";
 
     HttpServer::new(move || {
         let cors = Cors::default()

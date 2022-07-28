@@ -6,9 +6,3 @@ pub struct EchoResponse {
     pub item: String
 }
 
-#[derive(Debug, Deserialize)]
-pub enum Status {
-    Success,
-    Error,
-    Unknown,
-}
