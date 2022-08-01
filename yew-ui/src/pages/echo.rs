@@ -1,10 +1,10 @@
 use yew::prelude::*;
-
 use reqwasm::http::{Request, RequestMode};
 
 use log;
 
-use types::{EchoResponse};
+use types::EchoResponse;
+use crate::{HOST, API_PORT};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct EchoProps {
@@ -26,7 +26,8 @@ pub fn echo(EchoProps { item }: &EchoProps) -> Html {
             let first_load= first_load.clone();
 
             if *first_load {
-                let endpoint = format!("http://127.0.0.1:8084/echo/{}", &item);
+                let endpoint = format!("{}:{}/echo/{}", HOST, API_PORT, &item);
+                log::info!("Fetch: {}", &endpoint);
 
                 wasm_bindgen_futures::spawn_local(async move {
                     let request = Request::get(&endpoint)
