@@ -28,8 +28,37 @@ pub struct Post {
     body: String,
 }
 
-pub async fn get_post(_pool: web::Data<Pool>, _id: web::Path<String>) -> Json<PostResponse> {
-    todo!();
+pub async fn get_post(pool: web::Data<Pool>, id: web::Path<String>) -> Result<Json<PostResponse>, PostError> {
+    let mut conn = match pool.get_conn() {
+        Ok(conn) => conn,
+        Err(e) => {
+            return Err(PostError {
+                name: e.to_string(),
+            })
+        }
+    };
+
+    match conn.query_map(
+        format!("SELECT id, title, author, categories, body, timeCreated FROM posts WHERE id = {}", id),
+        |(id, title, author, categories, body, time_created)| PostResponse {
+            id,
+            title,
+            author,
+            categories,
+            body,
+            time_created,
+        },
+    ) {
+        Ok(selected_posts) => match selected_posts.iter().next() {
+                Some(v) => Ok(Json(v.clone())),
+                None => Err(PostError {
+                    name: String::from(format!("Could not find post with id {}", id)),
+                })
+            }
+        Err(e) => Err(PostError {
+            name: e.to_string(),
+        }),
+    }
 }
 
 pub async fn get_posts(pool: web::Data<Pool>) -> Result<Json<Vec<PostResponse>>, PostError> {
@@ -83,8 +112,6 @@ pub async fn add_post(
         post.body,
         Utc::now().format("%a %b %e %T %Y"),
     );
-
-    println!("{}", query_str);
 
     match conn.query_drop(&query_str) {
         Ok(_) => Ok(Json(())),

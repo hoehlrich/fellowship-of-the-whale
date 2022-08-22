@@ -45,7 +45,7 @@ async fn main() -> std::io::Result<()> {
             .route("/echo/{item}", web::get().to(handlers::echo::get))
             .route("/posts", web::get().to(handlers::posts::get_posts))
             .route("/post/{id}", web::get().to(handlers::posts::get_post))
-            .route("/posts", web::post().to(handlers::posts::add_post))
+            .route("/post", web::post().to(handlers::posts::add_post))
     })
     .bind(("127.0.0.1", ACTIX_PORT.parse::<u16>().unwrap()))?
     .run()

@@ -53,3 +53,10 @@ quit
 ```bash
 cargo run
 ```
+
+## Make post request with curl
+
+```bash
+curl -X POST 127.0.0.1:8084/post
+    -H 'Content-Type: application/json'
+    -d '{"id":"123", "title":"Epic Title", "author":"Super cool author", "categories":"UsefulCategory", "body":"This post\'s body is super cool"}'

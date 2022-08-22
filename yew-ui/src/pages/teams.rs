@@ -32,7 +32,7 @@ impl Component for Teams {
                     />
                     <Team
                         team="Software"
-                        description="Writing code in Rust, the Software Team (henry) works alongside the Build Team to test our robot and make it functional. Every haunted by the phrase: \"They\'ll fix it in the software.\""
+                        description="Writing code in Rust, the Software Team (henry) works alongside the Build Team to test our robot and make it functional. Ever haunted by the phrase: \"They\'ll fix it in the software.\""
                         img_src="../../static/img/team_icons/software.png"
                     />
                 </div>
