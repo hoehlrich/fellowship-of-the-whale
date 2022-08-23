@@ -13,6 +13,7 @@ use pages::echo::Echo;
 use pages::home::Home;
 use pages::page_not_found::PageNotFound;
 use pages::posts::Posts;
+use pages::post::Post;
 use pages::press::Press;
 use pages::sponsors::Sponsors;
 use pages::teams::Teams;
@@ -33,6 +34,8 @@ pub enum Route {
     Teams,
     #[at("/posts")]
     Posts,
+    #[at("/post/:id")]
+    Post { id: String },
     #[at("/sponsors")]
     Sponsors,
     #[at("/documents")]
@@ -250,6 +253,9 @@ fn switch(route: &Route) -> Html {
         }
         Route::Echo { item } => {
             html! { <Echo item={item} /> }
+        }
+        Route::Post { id } => {
+            html! { <Post id={id} /> }
         }
         Route::NotFound => {
             html! { <PageNotFound /> }

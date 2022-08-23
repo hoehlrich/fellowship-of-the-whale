@@ -27,4 +27,3 @@ pub struct PostResponse {
     pub body: String,
     pub time_created: String,
 }
-
