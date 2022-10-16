@@ -28,7 +28,7 @@ pub struct Props {
             let first_load= first_load.clone();
 
             if *first_load {
-                let endpoint = format!("{}:{}/post/{}", HOST, API_PORT, &id);
+                let endpoint = format!("{}/api/post/{}", HOST, &id);
                 log::info!("Fetch: {}", &endpoint);
 
                 wasm_bindgen_futures::spawn_local(async move {
@@ -74,9 +74,6 @@ pub struct Props {
     html! {
     <div class="card">
         <div class="card-image">
-            <figure class="image is-2by1">
-                <img alt="This post's image" src="https://this-person-does-not-exist.com/en" loading="lazy" />
-            </figure>
         </div>
         <div class="card-content">
             <Link<Route> classes={classes!("title", "is-block")} to={Route::Post { id: post_state.id.clone() }}>
@@ -87,6 +84,9 @@ pub struct Props {
             </p>
             <p classes={classes!("subtitle", "is-block")}>
                         { "id: " } { post_state.id.clone() }
+            </p>
+            <p>
+                { "" } { post_state.body.clone() }
             </p>
         </div>
     </div>

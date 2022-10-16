@@ -26,7 +26,7 @@ pub fn echo(PostProps { id }: &PostProps) -> Html {
             let first_load= first_load.clone();
 
             if *first_load {
-                let endpoint = format!("{}:{}/post/{}", HOST, API_PORT, &id);
+                let endpoint = format!("{}/api/post/{}", HOST, &id);
                 log::info!("Fetch: {}", &endpoint);
 
                 wasm_bindgen_futures::spawn_local(async move {

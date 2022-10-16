@@ -24,7 +24,7 @@ pub fn view() -> Html {
             let first_load= first_load.clone();
 
             if *first_load {
-                let endpoint = format!("{}:{}/posts", HOST, API_PORT);
+                let endpoint = format!("{}/api/posts", HOST);
                 log::info!("Fetch: {}", &endpoint);
 
                 wasm_bindgen_futures::spawn_local(async move {

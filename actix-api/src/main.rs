@@ -10,7 +10,7 @@ mod handlers;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // MySQL Steup
-    let url = "mysql://root:password@localhost:3306/fotw";
+    let url = "mysql://root:@localhost:3306/fotw";
     let pool = Pool::new(url).expect("Error creating pool");
 
     let mut conn = pool.get_conn().expect("Error creating connection");
@@ -30,6 +30,7 @@ async fn main() -> std::io::Result<()> {
     };
 
     const ACTIX_PORT: &str = "8084";
+    const DNS: &str = "localhost";
 
     HttpServer::new(move || {
         let cors = Cors::default()
@@ -47,7 +48,7 @@ async fn main() -> std::io::Result<()> {
             .route("/post/{id}", web::get().to(handlers::posts::get_post))
             .route("/post", web::post().to(handlers::posts::add_post))
     })
-    .bind(("127.0.0.1", ACTIX_PORT.parse::<u16>().unwrap()))?
+    .bind((DNS, ACTIX_PORT.parse::<u16>().unwrap()))?
     .run()
     .await
 }

@@ -26,7 +26,7 @@ pub fn echo(EchoProps { item }: &EchoProps) -> Html {
             let first_load= first_load.clone();
 
             if *first_load {
-                let endpoint = format!("{}:{}/echo/{}", HOST, API_PORT, &item);
+                let endpoint = format!("{}/api/echo/{}", HOST, &item);
                 log::info!("Fetch: {}", &endpoint);
 
                 wasm_bindgen_futures::spawn_local(async move {

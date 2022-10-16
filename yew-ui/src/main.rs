@@ -20,7 +20,7 @@ use pages::teams::Teams;
 
 use yew::html::Scope;
 
-pub const HOST: &str = "http://127.0.0.1";
+pub const HOST: &str = "https://fotw.henryoehlrich.xyz";
 pub const UI_PORT: &str = "8080";
 pub const API_PORT: &str = "8084";
 
